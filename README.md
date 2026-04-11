@@ -1,74 +1,96 @@
-# 💰 Gerenciador de Gastos CLI
+# Gerenciador de Gastos CLI
 
 ## Descrição do Projeto
+Muitas pessoas têm dificuldade em controlar seus gastos diários, o que pode gerar desorganização financeira, dificuldade de planejamento e até endividamento.
 
-Muitas pessoas têm dificuldade em controlar seus gastos diários, o que pode gerar desorganização financeira.
+Este projeto foi desenvolvido com o objetivo de oferecer uma solução simples e prática para registrar, visualizar e gerenciar despesas diretamente pelo terminal.
 
-Este projeto foi desenvolvido com o objetivo de oferecer uma solução simples para registrar, visualizar e gerenciar despesas diretamente pelo terminal, de forma prática e eficiente.
+## Problema real
+O controle de gastos pessoais é uma dor comum na sociedade, pois muitas pessoas não possuem ferramentas simples e acessíveis para acompanhar suas despesas no dia a dia.
 
----
+## Proposta da solução
+A aplicação permite que o usuário registre seus gastos com nome, valor e categoria, além de listar, editar, remover, filtrar e calcular totais, facilitando o controle financeiro pessoal.
+
+## Público-alvo
+Pessoas que desejam organizar suas finanças pessoais de forma simples, utilizando uma aplicação leve e acessível via terminal.
 
 ## Funcionalidades
+- Adicionar gasto com nome, valor e categoria
+- Listar todos os gastos cadastrados
+- Mostrar total geral de gastos
+- Mostrar total por categoria
+- Filtrar gastos por categoria
+- Editar gastos existentes
+- Remover gastos
+- Salvamento automático em arquivo JSON
 
-* Adicionar gasto com nome, valor e categoria
-* Listar todos os gastos cadastrados
-* Mostrar total geral de gastos
-* Mostrar total por categoria
-* Filtrar gastos por categoria
-* Editar gastos existentes
-* Remover gastos
-* Salvamento automático em arquivo JSON
+## Tecnologias utilizadas
+- Python
+- JSON (armazenamento de dados)
+- Pytest (testes automatizados)
+- Flake8 (linting)
+- GitHub Actions (CI)
 
----
+## Instalação
 
-## Tecnologias Utilizadas
-
-* Python
-* JSON (armazenamento de dados)
-* Terminal / CLI
-
----
-
-## Como executar o projeto:
-
-1. Clone o repositório:
+Clone o repositório:
 
 ```bash
 git clone https://github.com/FilipePortela03/gerenciador-gastos-cli.git
 ```
 
-2. Acesse a pasta:
+Acesse a pasta do projeto:
 
 ```bash
 cd gerenciador-gastos-cli
 ```
 
-3. Execute o programa:
+Instale as dependências:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Execução
 
 ```bash
 python src/app.py
 ```
 
----
+## Como rodar os testes
 
-## Estrutura do Projeto
-
+```bash
+pytest tests
 ```
-gerenciador-gastos/
+
+## Como rodar o lint
+
+```bash
+flake8 src tests
+```
+
+## Estrutura do projeto
+
+```text
+gerenciador-gastos-cli/
 ├── .github/
-│ └── workflows/
-│ └── ci.yml
+│   └── workflows/
+│       └── ci.yml
 ├── src/
-│ └── app.py
+│   └── app.py
 ├── tests/
-│ └── test_app.py
+│   └── test_app.py
+├── .gitignore
 ├── README.md
 ├── requirements.txt
-└── .gitignore
+└── VERSION
 ```
 
----
+## Versão atual
+1.0.0
 
 ## Autor
-
 Filipe Portela
+
+## Repositório público
+https://github.com/FilipePortela03/gerenciador-gastos-cli
