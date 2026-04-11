@@ -71,6 +71,8 @@ flake8 src tests
 
 ## Estrutura do projeto
 
+## Estrutura do projeto
+
 ```text
 gerenciador-gastos-cli/
 ├── .github/
@@ -80,7 +82,9 @@ gerenciador-gastos-cli/
 │   └── app.py
 ├── tests/
 │   └── test_app.py
+├── .flake8
 ├── .gitignore
+├── gastos.json
 ├── README.md
 ├── requirements.txt
 └── VERSION
@@ -90,7 +94,7 @@ gerenciador-gastos-cli/
 1.0.0
 
 ## Autor
-Filipe Portela
+Filipe Portela Silva
 
 ## Repositório público
 https://github.com/FilipePortela03/gerenciador-gastos-cli
