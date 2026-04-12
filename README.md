@@ -71,8 +71,6 @@ flake8 src tests
 
 ## Estrutura do projeto
 
-## Estrutura do projeto
-
 ```text
 gerenciador-gastos-cli/
 ├── .github/
