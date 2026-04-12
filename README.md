@@ -39,13 +39,13 @@ Clone o repositório:
 git clone https://github.com/FilipePortela03/gerenciador-gastos-cli.git
 ```
 
-Acesse a pasta do projeto:
+## Acesse a pasta do projeto:
 
 ```bash
 cd gerenciador-gastos-cli
 ```
 
-Instale as dependências:
+## Instale as dependências:
 
 ```bash
 pip install -r requirements.txt
