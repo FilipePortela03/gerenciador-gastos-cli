@@ -1,5 +1,6 @@
 import json
 import os
+import requests
 
 ARQUIVO = "gastos.json"
 
@@ -13,7 +14,6 @@ def carregar_gastos():
     with open(ARQUIVO, "r") as f:
         gastos = json.load(f)
 
-        # Corrige dados antigos sem categoria
         for g in gastos:
             if "categoria" not in g:
                 g["categoria"] = "Outros"
@@ -24,6 +24,21 @@ def carregar_gastos():
 def salvar_gastos(gastos):
     with open(ARQUIVO, "w") as f:
         json.dump(gastos, f, indent=4)
+
+
+def buscar_cotacao_dolar():
+    url = "https://economia.awesomeapi.com.br/json/last/USD-BRL"
+
+    try:
+        resposta = requests.get(url, timeout=10)
+        resposta.raise_for_status()
+        dados = resposta.json()
+
+        return float(dados["USDBRL"]["bid"])
+
+    except Exception:
+        print("Erro ao buscar cotação do dólar.")
+        return None
 
 
 def adicionar_gasto(gastos):
@@ -47,6 +62,39 @@ def adicionar_gasto(gastos):
 
     salvar_gastos(gastos)
     print("Gasto adicionado com sucesso!")
+
+
+def adicionar_gasto_internacional(gastos):
+    nome = input("Nome do gasto internacional: ")
+
+    valor_input = input("Valor em dólar (USD): ").replace(",", ".")
+
+    try:
+        valor_usd = float(valor_input)
+    except Exception:
+        print("Valor inválido.")
+        return
+
+    cotacao = buscar_cotacao_dolar()
+
+    if cotacao is None:
+        print("Não foi possível converter o gasto.")
+        return
+
+    valor_brl = valor_usd * cotacao
+    categoria = input("Categoria: ").capitalize()
+
+    gastos.append({
+        "nome": nome,
+        "valor": valor_brl,
+        "categoria": categoria,
+        "moeda_original": "USD",
+        "valor_original": valor_usd,
+        "cotacao": cotacao
+    })
+
+    salvar_gastos(gastos)
+    print(f"Gasto internacional adicionado: US$ {valor_usd:.2f} = R$ {valor_brl:.2f}")
 
 
 def listar_gastos(gastos):
@@ -156,7 +204,8 @@ def main():
         print("5. Filtrar por categoria")
         print("6. Editar gasto")
         print("7. Remover gasto")
-        print("8. Sair")
+        print("8. Adicionar gasto internacional")
+        print("9. Sair")
 
         opcao = input("Escolha: ")
 
@@ -175,6 +224,8 @@ def main():
         elif opcao == "7":
             remover_gasto(gastos)
         elif opcao == "8":
+            adicionar_gasto_internacional(gastos)
+        elif opcao == "9":
             print("Saindo...")
             break
         else:

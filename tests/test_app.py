@@ -46,3 +46,11 @@ def test_carregar_gastos_corrige_categoria_ausente(tmp_path):
     gastos = app.carregar_gastos()
 
     assert gastos[0]["categoria"] == "Outros"
+
+
+def test_buscar_cotacao_dolar_integracao():
+    cotacao = app.buscar_cotacao_dolar()
+
+    assert cotacao is not None
+    assert isinstance(cotacao, float)
+    assert cotacao > 0
