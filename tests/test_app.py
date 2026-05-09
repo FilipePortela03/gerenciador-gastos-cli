@@ -1,6 +1,7 @@
 import json
 import sys
 from pathlib import Path
+from unittest.mock import patch, Mock
 
 sys.path.append(str(Path(__file__).resolve().parents[1] / "src"))
 
@@ -46,3 +47,22 @@ def test_carregar_gastos_corrige_categoria_ausente(tmp_path):
     gastos = app.carregar_gastos()
 
     assert gastos[0]["categoria"] == "Outros"
+
+
+@patch("app.requests.get")
+def test_buscar_cotacao_dolar_integracao(mock_get):
+    resposta_mock = Mock()
+
+    resposta_mock.json.return_value = {
+        "USDBRL": {
+            "bid": "5.42"
+        }
+    }
+
+    resposta_mock.raise_for_status.return_value = None
+
+    mock_get.return_value = resposta_mock
+
+    cotacao = app.buscar_cotacao_dolar()
+
+    assert cotacao == 5.42
