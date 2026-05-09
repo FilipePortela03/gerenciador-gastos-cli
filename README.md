@@ -11,6 +11,8 @@ O controle de gastos pessoais é uma dor comum na sociedade, pois muitas pessoas
 ## Proposta da solução
 A aplicação permite que o usuário registre seus gastos com nome, valor e categoria, além de listar, editar, remover, filtrar e calcular totais, facilitando o controle financeiro pessoal.
 
+Agora o sistema também permite registrar gastos internacionais em dólar (USD), realizando automaticamente a conversão para real (BRL) utilizando uma API pública de cotação.
+
 ## Público-alvo
 Pessoas que desejam organizar suas finanças pessoais de forma simples, utilizando uma aplicação leve e acessível via terminal.
 
@@ -23,13 +25,17 @@ Pessoas que desejam organizar suas finanças pessoais de forma simples, utilizan
 - Editar gastos existentes
 - Remover gastos
 - Salvamento automático em arquivo JSON
+- Adicionar gastos internacionais com conversão automática de USD para BRL
+- Integração com API pública de cotação de moedas
 
 ## Tecnologias utilizadas
 - Python
 - JSON (armazenamento de dados)
+- Requests (requisições HTTP)
 - Pytest (testes automatizados)
 - Flake8 (linting)
 - GitHub Actions (CI)
+- API AwesomeAPI (cotação de moedas)
 
 ## Instalação
 
@@ -56,6 +62,13 @@ pip install -r requirements.txt
 ```bash
 python src/app.py
 ```
+
+## Integração com API
+
+O projeto utiliza a AwesomeAPI para buscar a cotação atual do dólar em tempo real.
+
+API utilizada:
+https://economia.awesomeapi.com.br/json/last/USD-BRL
 
 ## Como rodar os testes
 
@@ -89,7 +102,7 @@ gerenciador-gastos-cli/
 ```
 
 ## Versão atual
-1.0.0
+2.0.0
 
 ## Autor
 Filipe Portela Silva
