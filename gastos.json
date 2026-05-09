@@ -1,1 +1,12 @@
-[]
+[
+    {
+        "nome": "Pipoca",
+        "valor": 2.5,
+        "categoria": "Alimenta\u00e7\u00e3o"
+    },
+    {
+        "nome": "arroz",
+        "valor": 5.5,
+        "categoria": "Alimenta\u00e7\u00e3o"
+    }
+]
